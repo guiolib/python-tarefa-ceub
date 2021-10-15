@@ -1,0 +1,8 @@
+version: "3"
+services:
+    banco-dados:
+        image: "postgres:alpine"
+        environment:
+            POSTGRES_PASSWORD: 123456
+        ports:
+            - 5432:5432
