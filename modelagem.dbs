@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="tarefa-ceub" id="Project-103" database="LogicalDesign" >
+	<schema name="tarefa-ceub" >
+		<table name="infracao" prior="Entity" >
+			<column name="codigo-infracao" type="int" jt="4" mandatory="y" />
+			<column name="codigo-tipo-infracao" type="int" jt="4" mandatory="y" />
+			<column name="codigo-tipo-veiculo" type="int" jt="4" mandatory="y" />
+			<column name="codigo-tipo-infrator" type="int" jt="4" mandatory="y" />
+			<column name="codigo-tipo-gravidade" type="int" jt="4" mandatory="y" />
+			<column name="horario-infracao" type="datetime" jt="93" />
+			<column name="rodovia" type="text" jt="-1" />
+			<column name="km-rodovia" type="text" jt="-1" />
+			<column name="local-complemento" type="text" jt="-1" />
+			<column name="local-longitude" type="numeric" jt="2" />
+			<column name="local-latitude" type="numeric" jt="2" />
+			<index name="Pk_infracao_codigo-infracao" unique="PRIMARY_KEY" >
+				<column name="codigo-infracao" />
+			</index>
+			<fk name="fk_infracao_tipo-infracao" to_schema="tarefa-ceub" to_table="tipo-infracao" type="NonIdentifyingMandatory" >
+				<fk_column name="codigo-tipo-infracao" pk="codigo-tipo-infracao" />
+			</fk>
+			<fk name="fk_infracao_tipo-gravidade" to_schema="tarefa-ceub" to_table="tipo-gravidade" type="NonIdentifyingMandatory" >
+				<fk_column name="codigo-tipo-gravidade" pk="codigo-gravidade" />
+			</fk>
+			<fk name="fk_infracao_tipo-infrator" to_schema="tarefa-ceub" to_table="tipo-infrator" type="NonIdentifyingMandatory" >
+				<fk_column name="codigo-tipo-infrator" pk="codigo-infrator" />
+			</fk>
+			<fk name="fk_infracao_tipo-veiculo" to_schema="tarefa-ceub" to_table="tipo-veiculo" type="NonIdentifyingMandatory" >
+				<fk_column name="codigo-tipo-veiculo" pk="codigo-veiculo" />
+			</fk>
+		</table>
+		<table name="tipo-gravidade" prior="Entity" >
+			<column name="codigo-gravidade" prior="codigo" type="int" jt="4" mandatory="y" />
+			<column name="nome-gravidade" prior="nome" type="text" jt="-1" mandatory="y" />
+			<index name="Pk_tipo-gravidade_codigo-gravidade" unique="PRIMARY_KEY" >
+				<column name="codigo-gravidade" />
+			</index>
+		</table>
+		<table name="tipo-infracao" prior="Entity" >
+			<column name="codigo-tipo-infracao" prior="codigo-infracao" type="int" jt="4" mandatory="y" />
+			<column name="nome-tipo-infracao" prior="nome" type="text" jt="-1" mandatory="y" />
+			<index name="Pk_tipo-infracao_codigo-infracao" unique="PRIMARY_KEY" >
+				<column name="codigo-tipo-infracao" />
+			</index>
+		</table>
+		<table name="tipo-infrator" prior="Entity" >
+			<column name="codigo-infrator" prior="codigo" type="int" jt="4" mandatory="y" />
+			<column name="nome-infrator" prior="nome-infrato" type="text" jt="-1" mandatory="y" />
+			<index name="Pk_tipo-infrator_codigo-infrator" unique="PRIMARY_KEY" >
+				<column name="codigo-infrator" />
+			</index>
+		</table>
+		<table name="tipo-veiculo" prior="tipo-" >
+			<column name="codigo-veiculo" prior="codigo" type="int" jt="4" mandatory="y" />
+			<column name="nome-veiculo" prior="nome" type="text" jt="-1" mandatory="y" />
+			<index name="Pk_tipo-veiculo_codigo-veiculo" unique="PRIMARY_KEY" >
+				<column name="codigo-veiculo" />
+			</index>
+		</table>
+	</schema>
+	<layout name="Default Layout" id="Layout-1d2c" show_relation="columns" >
+		<entity schema="tarefa-ceub" name="infracao" color="C1D8EE" x="528" y="336" />
+		<entity schema="tarefa-ceub" name="tipo-gravidade" color="C1D8EE" x="864" y="160" />
+		<entity schema="tarefa-ceub" name="tipo-infracao" color="C1D8EE" x="240" y="160" />
+		<entity schema="tarefa-ceub" name="tipo-infrator" color="C1D8EE" x="656" y="160" />
+		<entity schema="tarefa-ceub" name="tipo-veiculo" color="C1D8EE" x="432" y="160" />
+		<callout x="48" y="48" pointer="Round" >
+			<comment><![CDATA[Right-click the layout to create entities or shapes, create relations using drag and drop.
+Save the design to file. Use the Convert menu option to convert the model to a physical model.]]></comment>
+		</callout>
+	</layout>
+</project>
